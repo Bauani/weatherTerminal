@@ -25,9 +25,10 @@ void WeatherData::load(std::string location)
     downloadWeatherData(location); 
 
     ptree dataTree;
-
     read_json(location, dataTree);
-    
+
+    cleanUpTempFile(location);   
+
     // check whether child excists
     boost::optional<ptree& > child = dataTree.get_child_optional( "name" );
     if (!child)

@@ -18,8 +18,6 @@ using std::cout;
 using std::shared_ptr;
 using std::thread;
 
-//XXX DENNE FUNKER XXX Flytt den inni klassa!
-bool prior(const shared_ptr<WeatherData>& pl, const shared_ptr<WeatherData>& pr){ return pl->name()>pr->name(); }
 
 int main(int argc, char *argv[])
 {
@@ -48,14 +46,8 @@ int main(int argc, char *argv[])
     // TODO Check whether the location is registered (if name : 
   }
 
-//  std::sort(allLocationsData.begin(), allLocationsData.end(), 
-//      [](const shared_ptr<WeatherData> &l, const shared_ptr<WeatherData> &r){ return WeatherData::priorTo(*l, *r););
-  /*
-  std::sort(  allLocationsData.begin(),
-              allLocationsData.end(),
-              prior );
-              */
-
+  // Get custom sort algorith from static member in WeatherData (initialized 
+  //   from systemsInterface::readArgument(argc,**argv)
   std::function<bool (const WeatherData& lhs, const WeatherData& rhs)> greater = WeatherData::comparisonFunction();
   std::sort(  allLocationsData.begin(),
               allLocationsData.end(),

@@ -12,3 +12,9 @@ void downloadWeatherData(const std::string& location)
   std::string shellCommmand = "wget http://api.openweathermap.org/data/2.5/weather?q=" + location + " -O " + location + " -o logFile_"+location;
   shell::exec(shellCommmand);
 }
+
+void cleanUpTempFile(const std::string& location)
+{
+  std::string shellCommmand = "rm " + location;
+  shell::exec(shellCommmand);
+}
