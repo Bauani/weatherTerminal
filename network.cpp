@@ -15,6 +15,6 @@ void downloadWeatherData(const std::string& location)
 
 void cleanUpTempFile(const std::string& location)
 {
-  std::string shellCommmand = "rm " + location;
+  std::string shellCommmand = "rm " + location + " logFile_" + location;
   shell::exec(shellCommmand);
 }

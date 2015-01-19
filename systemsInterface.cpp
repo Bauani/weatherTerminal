@@ -15,6 +15,7 @@ vector<string> shell::readArgument(int argCount, char *argValues[])
 
   vector<string> ret;
 
+  // Present all arguments:
   for (int iter = 1; iter<argCount; ++iter) {
     cout<<GREENCOLOR <<argValues[iter] <<DEFAULTCOLOR <<'\n';
 
@@ -51,6 +52,14 @@ vector<string> shell::readArgument(int argCount, char *argValues[])
           WeatherData::setComparisonFunction( 
               [](WeatherData const& lhs, WeatherData const& rhs) -> bool 
           { return lhs.pressure() < rhs.pressure(); });
+          ++iter;
+          searchOptionAllreadyGiven = true;
+          continue;
+        case 'h':
+          cout<<"Sort by humidity\n";
+          WeatherData::setComparisonFunction( 
+              [](WeatherData const& lhs, WeatherData const& rhs) -> bool 
+          { return lhs.humidity() < rhs.humidity(); });
           ++iter;
           searchOptionAllreadyGiven = true;
           continue;

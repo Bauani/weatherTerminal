@@ -74,6 +74,12 @@ bool WeatherData::excists() const {
 
 void WeatherData::printData() const
 {
+  cout<<GREYTEXT <<_name <<DEFAULTCOLOR <<'\t'
+      <<"Temp.: " <<_temp-273.15 <<"\tPressure:" <<_pressure <<"   \tHumidity:" <<_humidity <<'\n';
+}
+
+void WeatherData::printAllData() const
+{
   cout<<"Location:        \t"   <<GREYTEXT <<_name <<DEFAULTCOLOR <<'\n'
       <<"Coordinates:     \t"  <<coordinates() <<'\n'
       <<"Sunrise/sunset:  \t"   <<_sunrise <<"\t/\t" <<_sunset <<'\n'

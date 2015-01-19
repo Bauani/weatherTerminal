@@ -17,12 +17,14 @@ class WeatherData {
     
     bool excists() const;
     void printData() const;
+    void printAllData() const;
     
     const std::string& name() const        { return _name; }
     const std::string& longitude() const   { return _longitude; }
     std::string coordinates() const        { const std::string ret = "["+_latitude+", " + _longitude + "]"; return ret; }
     const double temperature() const       { return _temp; }
     const double pressure() const          { return _pressure; }
+    const double humidity() const          { return _humidity; }
 
     static void setComparisonFunction(std::function<bool (const WeatherData& lhs, const WeatherData& rhs)> argFunction);
     static std::function<bool (const WeatherData& lhs, const WeatherData& rhs)> comparisonFunction() { return priorTo; }
