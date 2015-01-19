@@ -11,6 +11,9 @@
 class WeatherData {
   public:
     explicit WeatherData(std::string location);
+    WeatherData() { }
+
+    void load(const std::string location);
     
     bool excists() const;
     void printData() const;
@@ -25,8 +28,6 @@ class WeatherData {
     static std::function<bool (const WeatherData& lhs, const WeatherData& rhs)> comparisonFunction() { return priorTo; }
     
   private:
-    void load(const std::string location);
-
     std::string _name;
     std::string _longitude;
     std::string _latitude;
