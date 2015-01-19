@@ -24,8 +24,6 @@ int main(int argc, char *argv[])
   vector<string> shellArguments = shell::readArgument(argc, argv); 
 
 
-
-
   // Get weather data. Download and parse data from each location in separate threads.
   vector<shared_ptr<thread> > allThreads;
 
@@ -51,7 +49,7 @@ int main(int argc, char *argv[])
   std::vector<shared_ptr<WeatherData> >::iterator firstEmptyElement = allLocationsData.begin();
   for (auto wdIter : allLocationsData) {
     if (!wdIter->excists()) {
-      cout<<"Found non-excisting iter obj\tDeletes all entries that could not be found\n";
+      cout<<REDCOLOR <<"warninig" <<DEFAULTCOLOR <<"Could not find all supplied locations. Please check spelling\n";
       break; 
     }
     ++firstEmptyElement;
@@ -70,11 +68,5 @@ int main(int argc, char *argv[])
     iter->printData();
 
   cout<<'\n';
+
 }
-
-/* Plan: Make a separate function that gets weather data and parses JSON file (fill WeatherData objects). 
- *   - This function is to be used in the threads
- *   - Function takes argument: The list that is to be filled with WeatherData pointers (heap objects)
- *
- */
-
