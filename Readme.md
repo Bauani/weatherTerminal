@@ -9,6 +9,8 @@ This project is a quick implementation of a command line interface to the curren
 
 The implementation currently uses **wget** shell software that is preinstalled on most linux systems. 
 
+wget can also be installed manually on unix systems
+
 ## Compile software
 
 Boost **property_tree** librariy must be installed to compile the software.
@@ -22,4 +24,5 @@ The executable accepts the following arguments:
   * -p  Sort results by Pressure 
   * -h  Sort results by Humidity
   * -l  Sort results by Location (default)
+Other sort options can easily be made available by implementing the sort lambda funciton under the desired shell argument in **shell::readArgument(int, char* *)** in systemsInterface.cpp
 
